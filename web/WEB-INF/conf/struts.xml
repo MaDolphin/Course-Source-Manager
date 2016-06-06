@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.multipart.maxSize" value="524288000" />
+    <package name="Admin" extends="struts-default,json-default">
+
+        <!-- 拦截器 -->
+        <interceptors>
+            <interceptor name="AdminInterceptor" class="com.JavaEE.interceptor.AdminInterceptor"></interceptor>
+            <!-- 定义公共的拦截器链，在action标签中只需要引用拦截器链 -->
+            <interceptor-stack name="admindefaultstack">
+                <interceptor-ref name="AdminInterceptor"></interceptor-ref>
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+
+        <global-results>
+            <result name="login_admin">AdminTeacherLogin.jsp</result>
+        </global-results>
+
+        <!--action Method-->
+        <action name="addTeacher" class="TeacherAction" method="executeAddTeacher">
+            <result name="success" type="redirectAction">teacherInfoManager</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="addCourse" class="CourseAction" method="executeAddCourse">
+            <param name="savePath">/upload/images/course/</param>
+            <result name="success" type="redirectAction">courseInfoManager</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="deleteCourse" class="CourseAction" method="executeDeleteCourse">
+            <result name="success" type="redirectAction">courseInfoManager</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="batchImportCourse" class="CourseBatchImportAction" method="executeBatchImportCourse">
+            <param name="savePath">/upload/batchImport/</param>
+            <result name="success" type="redirectAction">courseInfoManager</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="batchImportTeacher" class="TeacherBatchImportAction" method="executeBatchImportTeacher">
+            <param name="savePath">/upload/batchImport/</param>
+            <result name="success" type="redirectAction">teacherInfoManager</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="editCourse" class="CourseAction" method="executeEditCourse">
+            <param name="savePath">/upload/images/course/</param>
+            <result name="success" type="redirectAction">courseInfoManager</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="passUser" class="UserAction" method="executePassUser">
+            <result name="success" type="redirectAction">userInfoManager</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="cancelUser" class="UserAction" method="executeCancelUser">
+            <result name="success" type="redirectAction">userInfoManager</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="resetPasswordUser" class="UserAction" method="executeResetPasswordUser">
+            <result name="success" type="redirectAction">userInfoManager</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="resetPasswordTeacher" class="TeacherAction" method="executeResetPasswordTeacher">
+            <result name="success" type="redirectAction">teacherInfoManager</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="passTeacher" class="TeacherAction" method="executePassTeacher">
+            <result name="success" type="redirectAction">teacherInfoManager</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="cancelTeacher" class="TeacherAction" method="executeCancelTeacher">
+            <result name="success" type="redirectAction">teacherInfoManager</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="editTeacher" class="TeacherAction" method="executeEditTeacher">
+            <result name="success" type="redirectAction">teacherInfoManager</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+
+        <!--jsp Directing-->
+        <action name="courseInfoManager" class="CourseAction" method="executeAllCourse">
+            <result>/WEB-INF/pages/backstage/courseInfoManager.jsp</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="courseBatchImport">
+            <result>/WEB-INF/pages/backstage/courseBatchImport.jsp</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="teacherInfoManager" class="TeacherAction" method="executeAllTeacher">
+            <result>/WEB-INF/pages/backstage/teacherInfoManager.jsp</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="teacherBatchImport">
+            <result>/WEB-INF/pages/backstage/teacherBatchImport.jsp</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="userInfoManager" class="UserAction" method="executeAllUser">
+            <result>/WEB-INF/pages/backstage/userInfoManager.jsp</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="userAuthority" class="UserAction" method="executeAllUserByAuthority">
+            <result>/WEB-INF/pages/backstage/userAuthority.jsp</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="adminInfoManager">
+            <result>/WEB-INF/pages/backstage/adminInfoManager.jsp</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="adminMain">
+            <result>/WEB-INF/pages/backstage/adminMain.jsp</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="adminAddCourse">
+            <result>/WEB-INF/pages/backstage/adminAddCourse.jsp</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="adminAddTeacher">
+            <result>/WEB-INF/pages/backstage/adminAddTeacher.jsp</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="adminEditCourse" class="CourseAction" method="initEditCourse">
+            <result name="success">/WEB-INF/pages/backstage/adminEditCourse.jsp</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="adminShowCourse" class="CourseAction" method="initShowCourse">
+            <result name="success">/WEB-INF/pages/backstage/adminShowCourse.jsp</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="adminEditTeacher" class="TeacherAction" method="initEditTeacher">
+            <result name="success">/WEB-INF/pages/backstage/adminEditTeacher.jsp</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="adminShowTeacher" class="TeacherAction" method="initShowTeacher">
+            <result name="success">/WEB-INF/pages/backstage/adminShowTeacher.jsp</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+        <action name="adminShowUser" class="UserAction" method="initShowUser">
+            <result name="success">/WEB-INF/pages/backstage/adminShowUser.jsp</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
+    </package>
+
+    <package name="Teacher" extends="struts-default,json-default">
+
+        <!-- 拦截器 -->
+        <interceptors>
+            <interceptor name="TeacherInterceptor" class="com.JavaEE.interceptor.TeacherInterceptor"></interceptor>
+            <!-- 定义公共的拦截器链，在action标签中只需要引用拦截器链 -->
+            <interceptor-stack name="teacherdefaultstack">
+                <interceptor-ref name="TeacherInterceptor"></interceptor-ref>
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+
+        <global-results>
+            <result name="login_teacher">AdminTeacherLogin.jsp</result>
+        </global-results>
+
+        <!--action Method-->
+        <action name="addSource" class="TeacherCourseAction" method="executeAddSource">
+            <param name="savePath">/upload/source/</param>
+            <result name="success" type="redirectAction">teacherShowClass</result>
+            <interceptor-ref name="teacherdefaultstack"></interceptor-ref>
+        </action>
+        <action name="delSource" class="TeacherCourseAction" method="executeDeleteSource">
+            <result name="success" type="redirectAction">teacherShowClass</result>
+            <interceptor-ref name="teacherdefaultstack"></interceptor-ref>
+        </action>
+        <action name="openCourse" class="TeacherCourseAction" method="executeOpenCourse">
+            <result name="success" type="redirectAction">teacherShowClass</result>
+            <interceptor-ref name="teacherdefaultstack"></interceptor-ref>
+        </action>
+        <action name="endCourse" class="TeacherCourseAction" method="executeEndCourse">
+            <result name="success" type="redirectAction">teacherShowClass</result>
+            <interceptor-ref name="teacherdefaultstack"></interceptor-ref>
+        </action>
+        <action name="addHomework" class="TeacherCourseAction" method="executeAddHomework">
+            <param name="savePath">/upload/homework/</param>
+            <result name="success" type="redirectAction">teacherShowClass</result>
+            <interceptor-ref name="teacherdefaultstack"></interceptor-ref>
+        </action>
+        <action name="delHomework" class="TeacherCourseAction" method="executeDeleteHomework">
+            <result name="success" type="redirectAction">teacherShowClass</result>
+            <interceptor-ref name="teacherdefaultstack"></interceptor-ref>
+        </action>
+        <action name="addProduct" class="TeacherCourseAction" method="executeAddProduct">
+            <param name="savePath">/upload/product/</param>
+            <result name="success" type="redirectAction">teacherShowClass</result>
+            <interceptor-ref name="teacherdefaultstack"></interceptor-ref>
+        </action>
+        <action name="delProduct" class="TeacherCourseAction" method="executeDeleteProduct">
+            <result name="success" type="redirectAction">teacherShowClass</result>
+            <interceptor-ref name="teacherdefaultstack"></interceptor-ref>
+        </action>
+
+        <!--jsp Directing-->
+        <action name="teacherMain">
+            <result>/WEB-INF/pages/backstage/teacherMain.jsp</result>
+            <interceptor-ref name="teacherdefaultstack"></interceptor-ref>
+        </action>
+        <action name="teacherClassManager" class="TeacherCourseAction" method="executeAllCourseByTeacher">
+            <result>/WEB-INF/pages/backstage/teacherClassManager.jsp</result>
+            <interceptor-ref name="teacherdefaultstack"></interceptor-ref>
+        </action>
+        <action name="teacherShowClass" class="TeacherCourseAction" method="initTeacherShowClass">
+            <result>/WEB-INF/pages/backstage/teacherShowClass.jsp</result>
+            <interceptor-ref name="teacherdefaultstack"></interceptor-ref>
+        </action>
+        <action name="teacherAddSource">
+            <result>/WEB-INF/pages/backstage/teacherAddSource.jsp</result>
+            <interceptor-ref name="teacherdefaultstack"></interceptor-ref>
+        </action>
+        <action name="teacherAddHomework">
+            <result>/WEB-INF/pages/backstage/teacherAddHomework.jsp</result>
+            <interceptor-ref name="teacherdefaultstack"></interceptor-ref>
+        </action>
+        <action name="teacherAddProduct">
+            <result>/WEB-INF/pages/backstage/teacherAddProduct.jsp</result>
+            <interceptor-ref name="teacherdefaultstack"></interceptor-ref>
+        </action>
+    </package>
+
+    <package name="User" extends="struts-default,json-default">
+
+        <!-- 拦截器 -->
+        <interceptors>
+            <interceptor name="UserInterceptor" class="com.JavaEE.interceptor.UserInterceptor"></interceptor>
+            <!-- 定义公共的拦截器链，在action标签中只需要引用拦截器链 -->
+            <interceptor-stack name="userdefaultstack">
+                <interceptor-ref name="UserInterceptor"></interceptor-ref>
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+
+        <global-results>
+            <result name="login_user">index.jsp</result>
+        </global-results>
+
+        <!--action Method-->
+        <action name="joinInCourse" class="UserCourseAction" method="executeUserJoinInCourse">
+            <result name="success" type="redirectAction">detailCourse</result>
+            <interceptor-ref name="userdefaultstack"></interceptor-ref>
+        </action>
+        <action name="joinOutCourse" class="UserCourseAction" method="executeUserJoinOutCourse">
+            <result name="success" type="redirectAction">detailCourse</result>
+            <interceptor-ref name="userdefaultstack"></interceptor-ref>
+        </action>
+        <action name="editUser" class="UserCourseAction" method="executeEditUser">
+            <result name="success" type="redirectAction">userIndex</result>
+        </action>
+
+        <!--jsp Directing-->
+        <action name="detailCourse" class="UserCourseAction" method="initDetailCourse">
+            <result name="success" >/WEB-INF/pages/stage/detailCourse.jsp</result>
+            <result name="input">index.jsp</result>
+            <interceptor-ref name="userdefaultstack"></interceptor-ref>
+        </action>
+        <action name="userIndex" class="UserCourseAction" method="initUserIndex">
+            <result name="success">/WEB-INF/pages/stage/userIndex.jsp</result>
+            <interceptor-ref name="userdefaultstack"></interceptor-ref>
+        </action>
+        <action name="editUserInfo" class="UserCourseAction" method="initEditUserInfo">
+            <result name="success">/WEB-INF/pages/stage/editUserInfo.jsp</result>
+            <interceptor-ref name="userdefaultstack"></interceptor-ref>
+        </action>
+        <action name="showHomework" class="UserCourseAction" method="initShowHomework">
+            <result name="success" type="redirect">pdfShow.jsp?file=${fileUrl}</result>
+        </action>
+
+    </package>
+    
+    <package name="Common" extends="struts-default,json-default">
+        <!--action Method-->
+        <action name="login" class="loginAction" method="executeLogin">
+            <result type="json"></result>
+        </action>
+        <action name="emailAvailable" class="regAction" method="executeEmailAvailable">
+            <result type="json"></result>
+        </action>
+        <action name="nameAvailable" class="regAction" method="executeNameAvailable">
+            <result type="json"></result>
+        </action>
+        <action name="register" class="regAction" method="executeRegister">
+            <result type="json"></result>
+        </action>
+        <action name="logout" class="loginAction" method="executeLogout">
+            <result name="success">index.jsp</result>
+        </action>
+        <action name="indexSearch" class="UserCourseAction" method="executeIndexSearch">
+            <result type="json">
+                <param name="root">indexSearchJSON</param>
+            </result>
+        </action>
+
+        <action name="AdminTeacherLogin" class="AdminTeacherLoginAction" method="executeLogin">
+            <result name="success_teacher" type="chain">teacherMain</result>
+            <result name="success_admin" type="chain">adminMain</result>
+            <result name="input">AdminTeacherLogin.jsp</result>
+        </action>
+        <action name="AdminTeacherLogout" class="AdminTeacherLoginAction" method="executeLogout">
+            <result name="success">AdminTeacherLogin.jsp</result>
+            <result name="input">AdminTeacherLogin.jsp</result>
+        </action>
+
+        <!--jsp Directing-->
+        <action name="pdfShow">
+            <result>pdfShow.jsp</result>
+        </action>
+        <action name="showCourse" class="UserCourseAction" method="initShowCourse">
+            <result name="success">/WEB-INF/pages/stage/showCourse.jsp</result>
+        </action>
+        <action name="searchCourse" class="UserCourseAction" method="initSearchCourse">
+            <result name="success">/WEB-INF/pages/stage/searchCourse.jsp</result>
+        </action>
+    </package>
+</struts>

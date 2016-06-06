@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-2.5.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+    <!--Action Mapping-->
+    <bean id="regAction" class="com.JavaEE.action.RegAction">
+        <property name="userService" ref="userService"></property>
+    </bean>
+
+    <bean id="loginAction" class="com.JavaEE.action.LoginAction">
+        <property name="userService" ref="userService"></property>
+    </bean>
+
+    <bean id="UserAction" class="com.JavaEE.action.UserAction">
+        <property name="adminService" ref="adminService"></property>
+    </bean>
+
+    <bean id="CourseAction" class="com.JavaEE.action.CourseAction">
+        <property name="adminService" ref="adminService"></property>
+    </bean>
+
+    <bean id="TeacherAction" class="com.JavaEE.action.TeacherAction">
+        <property name="adminService" ref="adminService"></property>
+    </bean>
+
+    <bean id="CourseBatchImportAction" class="com.JavaEE.action.CourseBatchImportAction">
+        <property name="adminService" ref="adminService"></property>
+    </bean>
+
+    <bean id="TeacherBatchImportAction" class="com.JavaEE.action.TeacherBatchImportAction">
+        <property name="adminService" ref="adminService"></property>
+    </bean>
+
+    <bean id="AdminTeacherLoginAction" class="com.JavaEE.action.AdminTeacherLoginAction">
+        <property name="teacherService" ref="teacherService"></property>
+        <property name="adminService" ref="adminService"></property>
+    </bean>
+
+    <bean id="TeacherCourseAction" class="com.JavaEE.action.TeacherCourseAction">
+        <property name="teacherService" ref="teacherService"></property>
+    </bean>
+
+    <bean id="UserCourseAction" class="com.JavaEE.action.UserCourseAction">
+        <property name="userService" ref="userService"></property>
+    </bean>
+
+    <!--Service Mapping-->
+    <bean id="userService" class="com.JavaEE.serviceimpl.UserServiceImpl">
+        <property name="userDao" ref="userDao"></property>
+        <property name="teacherDao" ref="teacherDao"></property>
+        <property name="courseDao" ref="courseDao"></property>
+        <property name="sourceDao" ref="sourceDao"></property>
+        <property name="courseInfoDao" ref="courseInfoDao"></property>
+        <property name="workInfoDao" ref="workInfoDao"></property>
+        <property name="productDao" ref="productDao"></property>
+    </bean>
+
+    <bean id="teacherService" class="com.JavaEE.serviceimpl.TeacherServiceImpl">
+        <property name="teacherDao" ref="teacherDao"></property>
+        <property name="courseDao" ref="courseDao"></property>
+        <property name="sourceDao" ref="sourceDao"></property>
+        <property name="courseInfoDao" ref="courseInfoDao"></property>
+        <property name="workInfoDao" ref="workInfoDao"></property>
+        <property name="productDao" ref="productDao"></property>
+    </bean>
+
+    <bean id="adminService" class="com.JavaEE.serviceimpl.AdminServiceImpl">
+        <property name="adminDao" ref="adminDao"></property>
+        <property name="courseDao" ref="courseDao"></property>
+        <property name="teacherDao" ref="teacherDao"></property>
+        <property name="userDao" ref="userDao"></property>
+        <property name="sourceDao" ref="sourceDao"></property>
+        <property name="courseInfoDao" ref="courseInfoDao"></property>
+        <property name="workInfoDao" ref="workInfoDao"></property>
+        <property name="productDao" ref="productDao"></property>
+        <property name="messageDao" ref="messageDao"></property>
+    </bean>
+
+    <!--Dao Mapping-->
+    <bean id="workInfoDao" class="com.JavaEE.daoimpl.WorkInfoDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean id="userDao" class="com.JavaEE.daoimpl.UserDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean id="teacherDao" class="com.JavaEE.daoimpl.TeacherDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean id="sourceDao" class="com.JavaEE.daoimpl.SourceDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean id="productDao" class="com.JavaEE.daoimpl.ProductDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean id="messageDao" class="com.JavaEE.daoimpl.MessageDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean id="courseInfoDao" class="com.JavaEE.daoimpl.CourseInfoDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean id="courseDao" class="com.JavaEE.daoimpl.CourseDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean id="adminDao" class="com.JavaEE.daoimpl.AdminDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="configLocation" value="/WEB-INF/conf/hibernate.cfg.xml"></property>
+    </bean>
+
+    <!-- 配置声明式事务管理（采用注解的方式） -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="add*" propagation="REQUIRED"/>
+            <tx:method name="save*" propagation="REQUIRED" />
+            <tx:method name="update*" propagation="REQUIRED" />
+            <tx:method name="delete*" propagation="REQUIRED" />
+            <tx:method name="find*" propagation="NOT_SUPPORTED"/>
+            <tx:method name="get*" propagation="NOT_SUPPORTED"/>
+            <tx:method name="*" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="alladdmethod" expression="execution(* com.JavaEE.dao.*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="alladdmethod"/>
+    </aop:config>
+
+</beans>

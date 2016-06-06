@@ -1,0 +1,24 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="JavaEEPro:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/JavaEEPro_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="JavaEEPro/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="JavaEEPro" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="application" name="Hibernate 4.2.2-4.2.2" />
+          <element id="library" level="application" name="jstl" />
+          <element id="library" level="application" name="Spring MVC-4.2.5.RELEASE" />
+          <element id="library" level="application" name="Spring-4.2.5.RELEASE" />
+          <element id="library" level="application" name="Struts 2-2.3.20.1" />
+          <element id="library" level="project" name="Poi3" />
+          <element id="library" level="project" name="file2pdf" />
+          <element id="library" level="project" name="HTML2pdf" />
+          <element id="library" level="project" name="mariadb-java-client-1.3.6" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

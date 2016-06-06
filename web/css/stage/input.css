@@ -1,0 +1,26 @@
+.cssInput{
+    border:1px solid #7A6F6F;
+    border:1px solid #7A6F6F \9;/*IE*/
+    width:200px;
+    height:30px;/*非IE高度*/
+    height:20px \9;/*IE高度*/
+    padding-left:5px; /*all*/
+    line-height:20px \9;/*IE*/
+    -moz-border-radius:3px;/*Firefox*/
+    -webkit-border-radius:3px;/*Safari和Chrome*/
+    border-radius:3px;/*IE9+*/
+    background-color:white;
+    outline:none;
+    font-family: 微软雅黑;
+
+}
+.cssInput:focus{/*IE8+*/
+    border-color:#78BAED;
+    outline:1px solid #78BAED;/*chrome*/
+}
+
+.mylab{
+    font-family: 微软雅黑;
+    font-size: 18px;
+    font-weight: bold;
+}

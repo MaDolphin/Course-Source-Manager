@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="HTML2pdf">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../lib/HTML2pdf" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../lib/HTML2pdf" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../lib/HTML2pdf" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../lib/HTML2pdf" recursive="false" type="SOURCES" />
+  </library>
+</component>
