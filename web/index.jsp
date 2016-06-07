@@ -81,8 +81,8 @@
   <%@ include file="common/stage/header.jsp"%>
     <div class="header_btm">
       <div class="h_left">
-        <h2>Welcome Ladies & Gents to Calm Website.</h2>
-        <h3>A theme more stylish than any other on themeforest</h3>
+        <h2 style="font-family: 微软雅黑;font-size: 36px;margin-bottom: 10px">欢迎来到课程资源世界</h2>
+        <h2 style="font-family: 微软雅黑;font-size: 24px">Welcome to Course&Source!</h2>
       </div>
       <div class="clear"></div>
     </div>

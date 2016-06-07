@@ -12,7 +12,6 @@
     </div>
     <div class="h_right">
         <ul class="menu">
-            <li><a href="adminMain.action">管理</a></li>
             <li><a href="index.jsp">首页</a></li>
             <li><a href="showCourse.action">课程</a></li>
             <c:if test="${sessionScope.user != null}">
