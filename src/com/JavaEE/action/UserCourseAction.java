@@ -8,8 +8,13 @@ import net.sf.json.JSONArray;
 import net.sf.json.JsonConfig;
 import net.sf.json.JSONObject;
 import net.sf.json.util.CycleDetectionStrategy;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Iterator;
@@ -37,6 +42,7 @@ public class UserCourseAction implements SessionAware {
     private String result_joinInCourse;
     private String result_joinOutCourse;
     private String fileUrl;
+    private String downFileName;
     private int workId;
     private String userName;
     private String userPwd;
@@ -45,6 +51,15 @@ public class UserCourseAction implements SessionAware {
     private Integer userStatus;
     private Timestamp createTime;
     private String result_edit_user;
+    private InputStream downloadFile;
+
+    public String getDownFileName() {
+        return downFileName;
+    }
+
+    public void setDownFileName(String downFileName) {
+        this.downFileName = downFileName;
+    }
 
     public void setSession(Map session) {
         this.session = session;
@@ -335,4 +350,26 @@ public class UserCourseAction implements SessionAware {
         userService.editUserHomework(workInfo);
         return SUCCESS;
     }
+
+    public String executeDownLoadFile(){
+        return SUCCESS;
+    }
+
+    public void setDownloadFile(InputStream downloadFile) {
+        this.downloadFile = downloadFile;
+    }
+
+    public InputStream getDownloadFile() throws Exception {
+        this.downFileName=(fileUrl.substring(fileUrl.lastIndexOf("/")+1));
+        this.downFileName = new String(this.downFileName.getBytes("GBK"),"ISO-8859-1");
+        File file=new File(ServletActionContext.getServletContext().getRealPath(fileUrl));
+        FileInputStream fis=null;
+        try{
+            fis=new FileInputStream(file);
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+        return fis;
+    }
+
 }

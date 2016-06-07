@@ -248,8 +248,18 @@
             <result name="success" type="redirectAction">detailCourse</result>
             <interceptor-ref name="userdefaultstack"></interceptor-ref>
         </action>
+
         <action name="editUser" class="UserCourseAction" method="executeEditUser">
             <result name="success" type="redirectAction">userIndex</result>
+        </action>
+
+        <action name="downLoad" class="UserCourseAction" method="executeDownLoadFile">
+            <result name="success" type="stream">
+                <param name="contentType">application/octet-stream</param>
+                <param name="contentDisposition">attachment;fileName="${downFileName}"</param>
+                <param name="inputName">downloadFile</param>
+                <param name="bufferSize">524288000</param>
+            </result>
         </action>
 
         <!--jsp Directing-->
