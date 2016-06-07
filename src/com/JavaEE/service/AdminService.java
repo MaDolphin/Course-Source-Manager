@@ -42,4 +42,5 @@ public interface AdminService {
     public boolean editTeacher(Teacher teacher);
     public User queryUserById(String userid);
     public List<Course> queryAllCourseByUser(String userid);
+    public boolean editAdmin(Admin admin);
 }

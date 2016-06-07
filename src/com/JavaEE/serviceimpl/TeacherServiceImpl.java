@@ -342,4 +342,9 @@ public class TeacherServiceImpl implements TeacherService,SessionAware {
             return false;
         }
     }
+
+    @Override
+    public boolean editTeacher(Teacher teacher) {
+        return teacherDao.updateTeacher(teacher);
+    }
 }

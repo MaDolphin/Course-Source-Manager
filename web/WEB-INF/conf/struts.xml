@@ -79,6 +79,10 @@
             <result name="success" type="redirectAction">teacherInfoManager</result>
             <interceptor-ref name="admindefaultstack"></interceptor-ref>
         </action>
+        <action name="admineditInfoDetail" class="AdminAction" method="executeAdminEditInfo">
+            <result name="success" type="redirectAction">adminEditDetail</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
 
         <!--jsp Directing-->
         <action name="courseInfoManager" class="CourseAction" method="executeAllCourse">
@@ -141,6 +145,10 @@
             <result name="success">/WEB-INF/pages/backstage/adminShowUser.jsp</result>
             <interceptor-ref name="admindefaultstack"></interceptor-ref>
         </action>
+        <action name="adminEditDetail">
+            <result>/WEB-INF/pages/backstage/adminEditDetail.jsp</result>
+            <interceptor-ref name="admindefaultstack"></interceptor-ref>
+        </action>
     </package>
 
     <package name="Teacher" extends="struts-default,json-default">
@@ -195,6 +203,10 @@
             <result name="success" type="redirectAction">teacherShowClass</result>
             <interceptor-ref name="teacherdefaultstack"></interceptor-ref>
         </action>
+        <action name="teachereditInfoDetail" class="TeacherAction" method="executeEditTeacher">
+            <result name="success" type="redirectAction">teacherEditDetail</result>
+            <interceptor-ref name="teacherdefaultstack"></interceptor-ref>
+        </action>
 
         <!--jsp Directing-->
         <action name="teacherMain">
@@ -219,6 +231,10 @@
         </action>
         <action name="teacherAddProduct">
             <result>/WEB-INF/pages/backstage/teacherAddProduct.jsp</result>
+            <interceptor-ref name="teacherdefaultstack"></interceptor-ref>
+        </action>
+        <action name="teacherEditDetail">
+            <result>/WEB-INF/pages/backstage/teacherEditDetail.jsp</result>
             <interceptor-ref name="teacherdefaultstack"></interceptor-ref>
         </action>
     </package>

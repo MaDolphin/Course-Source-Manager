@@ -5,6 +5,7 @@ import com.JavaEE.entity.Admin;
 import com.JavaEE.entity.Course;
 import com.JavaEE.entity.Teacher;
 import com.JavaEE.service.AdminService;
+import com.JavaEE.service.TeacherService;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
@@ -18,6 +19,7 @@ import java.util.Map;
  */
 public class TeacherAction extends ActionSupport implements SessionAware {
     private AdminService adminService;
+    private TeacherService teacherService;
     private int teaId;
     private String teaName;
     private String teaPwd;
@@ -56,6 +58,10 @@ public class TeacherAction extends ActionSupport implements SessionAware {
 
     public void setAdminService(AdminService adminService) {
         this.adminService = adminService;
+    }
+
+    public void setTeacherService(TeacherService teacherService) {
+        this.teacherService = teacherService;
     }
 
     public String getTeaName() {
@@ -146,5 +152,15 @@ public class TeacherAction extends ActionSupport implements SessionAware {
         return SUCCESS;
     }
 
+    public String executeTeacherEditInfo(){
+        Teacher teacher = teacherService.queryTeacherById(String.valueOf(teaId));
+        teacher.setTeaPwd(teaPwd);
+        teacher.setTeaName(teaName);
+        teacher.setTeaEmail(teaEmail);
+        teacherService.editTeacher(teacher);
+        Teacher r = teacherService.queryTeacherById(String.valueOf(teaId));
+        session.put("teacher",r);
+        return SUCCESS;
+    }
 
 }

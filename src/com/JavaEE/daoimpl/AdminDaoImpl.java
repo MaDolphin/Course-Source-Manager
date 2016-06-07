@@ -40,4 +40,15 @@ public class AdminDaoImpl extends HibernateDaoSupport implements AdminDao {
             return false;
         else return true;
     }
+
+    @Override
+    public boolean updateAdmin(Admin admin) {
+        try{
+            this.getHibernateTemplate().saveOrUpdate(admin);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

@@ -357,6 +357,11 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    public boolean editAdmin(Admin admin) {
+        return adminDao.updateAdmin(admin);
+    }
+
+    @Override
     public boolean passUser(String userid) {
         User user = userDao.queryUserByID(userid);
         user.setUserStatus(1);

@@ -26,4 +26,5 @@ public interface TeacherService {
     public boolean delHomework(String workId);
     public boolean addProduct(Product product, String savePath, File uploadFile);
     public boolean delProduct(String proId);
+    public boolean editTeacher(Teacher teacher);
 }

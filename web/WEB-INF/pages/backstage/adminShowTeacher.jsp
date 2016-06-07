@@ -116,7 +116,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="adminInfoManager.action">管理员管理</a>
+                        <a href="adminEditDetail.action">管理员管理</a>
                     </li>
                 </ul>
             </li>

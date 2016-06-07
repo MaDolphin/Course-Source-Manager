@@ -10,4 +10,5 @@ public interface AdminDao {
     public Admin queryAdminByID(String aid);
     public List<Admin> allAdmins();
     public boolean existAdmin(String id,String password);
+    public boolean updateAdmin(Admin admin);
 }

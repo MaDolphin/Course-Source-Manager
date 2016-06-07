@@ -84,7 +84,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="adminInfoManager.action">个人信息</a>
+                        <a href="teacherEditDetail.action">个人信息</a>
                     </li>
                 </ul>
             </li>
