@@ -164,7 +164,7 @@
                             <div class="control-group">
                                 <label class="control-label">教师姓名</label>
                                 <div class="controls">
-                                    <input type="text" class="span3 m-wrap" id="teaName" name="teaName" />
+                                    <input type="text" class="span3 m-wrap" id="teaName" name="teaName" required />
                                 </div>
                             </div>
                             <div class="control-group">
@@ -176,7 +176,7 @@
                             <div class="control-group">
                                 <label class="control-label">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</label>
                                 <div class="controls">
-                                    <input type="password" class="span3 m-wrap" id="teaPwd" name="teaPwd" />
+                                    <input type="password" class="span3 m-wrap" id="teaPwd" name="teaPwd" required />
                                 </div>
                             </div>
                             <div class="form-actions">

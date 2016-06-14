@@ -164,27 +164,27 @@
                                 <div class="control-group">
                                     <label class="control-label">课程编号</label>
                                     <div class="controls">
-                                        <input class="span3 m-wrap" id="couId" name="couId" type="text" minlength="8"/>
+                                        <input class="span3 m-wrap" id="couId" name="couId" type="text" minlength="8" required/>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label">课程名称</label>
                                     <div class="controls">
-                                        <input type="text" class="span3 m-wrap" id="couName" name="couName" />
+                                        <input type="text" class="span3 m-wrap" id="couName" name="couName" required />
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label">开课时间</label>
                                     <div class="controls">
                                         <div >
-                                            <input class="span3 m-wrap m-ctrl-medium " size="16" type="date" value="" id="startTime" name="startTime"/>
+                                            <input class="span3 m-wrap m-ctrl-medium " size="16" type="date" value="" id="startTime" name="startTime" required/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label">课程类别</label>
                                     <div class="controls">
-                                        <select class="span3 m-wrap" data-placeholder="Choose a Category" tabindex="1" id="couType" name="couType">
+                                        <select class="span3 m-wrap" data-placeholder="Choose a Category" tabindex="1" id="couType" name="couType" required>
                                             <option value="">课程分类...</option>
                                             <option value="艺术人文">艺术人文</option>
                                             <option value="商务管理">商务管理</option>
@@ -197,7 +197,7 @@
                                 <div class="control-group">
                                     <label class="control-label">授课教师</label>
                                     <div class="controls">
-                                        <input class="span3 m-wrap" id="couTea" name="couTea" type="text"  />
+                                        <input class="span3 m-wrap" id="couTea" name="couTea" type="text" required />
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -212,7 +212,7 @@
 													<span class="btn btn-file"><span class="fileupload-new">选择图片</span>
 
 													<span class="fileupload-exists">更改</span>
-													<input type="file" class="default" id="upload" name="upload"/></span>
+													<input type="file" class="default" id="upload" name="upload" required/></span>
                                                     <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">删除</a>
                                             </div>
                                         </div>
@@ -222,7 +222,7 @@
                                 <div class="control-group">
                                     <label class="control-label">课程简介</label>
                                     <div class="controls">
-                                        <textarea class="span5 m-wrap" rows="8" id="couInfo" name="couInfo"></textarea>
+                                        <textarea class="span5 m-wrap" rows="8" id="couInfo" name="couInfo" required></textarea>
                                     </div>
                                 </div>
                                 <div class="form-actions">
