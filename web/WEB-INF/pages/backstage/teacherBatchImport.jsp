@@ -169,7 +169,7 @@
 													<span class="btn btn-file">
 													<span class="fileupload-new">上传</span>
 													<span class="fileupload-exists">修改</span>
-													<input type="file" style="height:20px" id="upload" name="upload" />
+													<input type="file" style="height:20px" id="upload" name="upload" onchange="LimitAttach()" />
 													</span>
                                             <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">移除</a>
                                         </div>
@@ -177,7 +177,7 @@
                                 </div>
                             </div>
                             <div class="form-actions">
-                                <button type="submit" class="btn blue">提交</button>
+                                <button type="submit" id="submit" class="btn blue" disabled>提交</button>
                                 <button type="button" class="btn">取消</button>
                             </div>
                         </form>
@@ -242,6 +242,17 @@
         App.init();
         FormComponents.init();
     });
+    function LimitAttach() {
+        var file=document.getElementById("upload").value;
+        //var form1=document.getElementById("form1");
+        var ext = file.slice(file.lastIndexOf(".")+1).toLowerCase();
+        if ("xls" != ext && "xlsx" !=ext) {
+            alert("只能上传Excel文件");
+            document.getElementById("submit").disabled = true;
+        }else{
+            document.getElementById("submit").disabled = false;
+        }
+    }
 </script>
 <!-- END JAVASCRIPTS -->
 </body>
