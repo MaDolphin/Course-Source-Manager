@@ -142,8 +142,41 @@ public class AdminServiceImpl implements AdminService {
                 wb = new XSSFWorkbook(fi);
             }
 
-            Sheet sheet = wb.getSheetAt(0);
+            //判断表头是否相同
+            Sheet sheetTitle = wb.getSheetAt(0);
+            Row rowTitle = sheetTitle.getRow(0);
+            int colNumTitle = rowTitle.getPhysicalNumberOfCells();
+            if(colNumTitle == 6){
+                if( rowTitle.getCell(0).getStringCellValue().equals("课程编号") == false){
+                    fileOperate.delFile(uploadFileFileName);
+                    return false;
+                }
+                if( rowTitle.getCell(1).getStringCellValue().equals("课程名") == false){
+                    fileOperate.delFile(uploadFileFileName);
+                    return false;
+                }
+                if( rowTitle.getCell(2).getStringCellValue().equals("开课时间") == false){
+                    fileOperate.delFile(uploadFileFileName);
+                    return false;
+                }
+                if( rowTitle.getCell(3).getStringCellValue().equals("课程类型") == false){
+                    fileOperate.delFile(uploadFileFileName);
+                    return false;
+                }
+                if( rowTitle.getCell(4).getStringCellValue().equals("任课教师") == false){
+                    fileOperate.delFile(uploadFileFileName);
+                    return false;
+                }
+                if( rowTitle.getCell(5).getStringCellValue().equals("课程简介") == false){
+                    fileOperate.delFile(uploadFileFileName);
+                    return false;
+                }
+            }else {
+                fileOperate.delFile(uploadFileFileName);
+                return false;
+            }
 
+            Sheet sheet = wb.getSheetAt(0);
             int rowNum = sheet.getLastRowNum()+1;
             List courseList = new ArrayList<Course>();
             //i 从1开始表示第一行为标题 不包含在数据中
@@ -193,7 +226,7 @@ public class AdminServiceImpl implements AdminService {
     public void courseIntoDB(List<Course> courseList) {
         int num = courseList.size();
         for(int i=0; i<num; i++){
-            courseDao.addCourse(courseList.get(i));
+            courseDao.updateCourse(courseList.get(i));
         }
     }
 
@@ -248,8 +281,29 @@ public class AdminServiceImpl implements AdminService {
                 wb = new XSSFWorkbook(fi);
             }
 
-            Sheet sheet = wb.getSheetAt(0);
+            //判断表头是否相同
+            Sheet sheetTitle = wb.getSheetAt(0);
+            Row rowTitle = sheetTitle.getRow(0);
+            int colNumTitle = rowTitle.getPhysicalNumberOfCells();
+            if(colNumTitle == 3){
+                if( rowTitle.getCell(0).getStringCellValue().equals("姓名") == false){
+                    fileOperate.delFile(uploadFileFileName);
+                    return false;
+                }
+                if( rowTitle.getCell(1).getStringCellValue().equals("电子邮箱") == false){
+                    fileOperate.delFile(uploadFileFileName);
+                    return false;
+                }
+                if( rowTitle.getCell(2).getStringCellValue().equals("密码") == false){
+                    fileOperate.delFile(uploadFileFileName);
+                    return false;
+                }
+            }else {
+                fileOperate.delFile(uploadFileFileName);
+                return false;
+            }
 
+            Sheet sheet = wb.getSheetAt(0);
             int rowNum = sheet.getLastRowNum()+1;
             List teacherList = new ArrayList<Teacher>();
             //i 从1开始表示第一行为标题 不包含在数据中

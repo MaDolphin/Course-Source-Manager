@@ -227,7 +227,7 @@
                             <div class="control-group">
                                 <label class="control-label">授课教师</label>
                                 <div class="controls">
-                                    <input class="span3 m-wrap" id="couTea" name="couTea" type="text" value="${sessionScope.courseById.couTea}"/>
+                                    <input class="span3 m-wrap" id="couTea" name="couTea" type="text" value="${sessionScope.courseById.couTea}" readonly/>
                                 </div>
                             </div>
                             <div class="control-group">

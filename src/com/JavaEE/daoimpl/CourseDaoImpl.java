@@ -68,6 +68,7 @@ public class CourseDaoImpl extends HibernateDaoSupport implements CourseDao {
     @Override
     public boolean updateCourse(Course course) {
         try{
+            this.getHibernateTemplate().clear();
             this.getHibernateTemplate().saveOrUpdate(course);
             return true;
         }catch (Exception e){

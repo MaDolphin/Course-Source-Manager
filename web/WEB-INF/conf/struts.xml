@@ -117,7 +117,7 @@
             <result>/WEB-INF/pages/backstage/adminMain.jsp</result>
             <interceptor-ref name="admindefaultstack"></interceptor-ref>
         </action>
-        <action name="adminAddCourse">
+        <action name="adminAddCourse" class="CourseAction" method="initAddCourse">
             <result>/WEB-INF/pages/backstage/adminAddCourse.jsp</result>
             <interceptor-ref name="admindefaultstack"></interceptor-ref>
         </action>

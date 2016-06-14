@@ -1,6 +1,7 @@
 package com.JavaEE.action;
 import com.JavaEE.dao.CourseDao;
 import com.JavaEE.entity.Course;
+import com.JavaEE.entity.Teacher;
 import com.JavaEE.entity.User;
 import com.JavaEE.service.AdminService;
 import com.JavaEE.service.TeacherService;
@@ -178,6 +179,12 @@ public class CourseAction extends ActionSupport implements SessionAware {
             }
         }
         session.put("result_course_edit",result);
+        return SUCCESS;
+    }
+
+    public String initAddCourse(){
+        List<Teacher> list = adminService.queryAllTeacher();
+        this.session.put("addCourse_teacherList",list);
         return SUCCESS;
     }
 

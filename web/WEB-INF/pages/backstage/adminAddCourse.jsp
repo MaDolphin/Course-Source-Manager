@@ -197,7 +197,12 @@
                                 <div class="control-group">
                                     <label class="control-label">授课教师</label>
                                     <div class="controls">
-                                        <input class="span3 m-wrap" id="couTea" name="couTea" type="text" required />
+                                        <select name="couTea" id="couTea" class="span3 m-wrap" required>
+                                            <option value="" selected>教师工号...</option>
+                                            <c:forEach items="${sessionScope.addCourse_teacherList}" var="tea">
+                                                <option value=${tea.teaId}>${tea.teaId}</option>
+                                            </c:forEach>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="control-group">
