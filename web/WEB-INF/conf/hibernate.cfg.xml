@@ -4,10 +4,11 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
         <session-factory>
+                <!--aliyun-->
                 <!--<property name="connection.url">jdbc:mysql://121.42.197.31:3306/Class?autoReconnect=true</property>-->
-                <!--<property name="connection.driver_class">com.mysql.jdbc.Driver</property>-->
-                <property name="connection.url">jdbc:mariadb://121.42.197.31:3306/Class?autoReconnect=true</property>
-                <property name="connection.driver_class">org.mariadb.jdbc.Driver</property>
+                <!--virtual machine-->
+                <property name="connection.url">jdbc:mysql://192.168.241.129:3306/Class?autoReconnect=true</property>
+                <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
                 <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
                 <property name="connection.username">hhk</property>
                 <property name="connection.password">1234</property>

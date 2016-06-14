@@ -78,10 +78,13 @@
             <div class="content" style="height: 900px">
                 <div id="pdf" style="margin-left:200px;margin-top:0px;width: 880px;height: 710px">
                 </div>
-                <div style="margin-left: 200px;margin-top: 20px">
-                    <a href="downLoad.action?fileUrl=${param.file}"
-                       class="button button-glow button-rounded button-raised button-primary" style="font-family: 微软雅黑">下载该资源文件</a>
-                </div>
+                <c:if test="${param.file != null}">
+                    <div style="margin-left: 200px;margin-top: 20px">
+                        <a href="downLoad.action?fileUrl=${param.file}"
+                           class="button button-glow button-rounded button-raised button-primary" style="font-family: 微软雅黑">下载该资源文件</a>
+                    </div>
+                </c:if>
+
 
                 <div id="myDiv">
                     <%--<div>--%>

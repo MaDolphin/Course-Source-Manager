@@ -367,7 +367,7 @@ public class UserCourseAction implements SessionAware {
         try{
             fis=new FileInputStream(file);
         }catch (FileNotFoundException e){
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         return fis;
     }

@@ -13,6 +13,7 @@ public class TeacherDaoImpl extends HibernateDaoSupport implements TeacherDao {
     @Override
     public boolean addTeacher(Teacher tea) {
         try{
+            this.getHibernateTemplate().clear();
             this.getHibernateTemplate().save(tea);
             return true;
         }catch (Exception ex){
